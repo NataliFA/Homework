@@ -16,7 +16,7 @@ else
 */
 
 //Задача 2: Напишите программу, которая принимает на вход три числа и выдаёт максимальное из этих чисел.
-
+/*
 Console.Write("Imput first integer number: ");
 int num1 = Convert.ToInt32(Console.ReadLine());
 Console.Write("Imput second integer number: ");
@@ -38,4 +38,20 @@ else
     {
         Console.WriteLine("max = " + num3);
     }
+}
+*/
+
+//Задача 3: Напишите программу, которая на вход принимает число и выдаёт, 
+//является ли число чётным (делится ли оно на два без остатка).
+
+Console.Write("Imput integer number: ");
+int num = Convert.ToInt32(Console.ReadLine());
+
+if (num %2 == 0)
+{
+    Console.WriteLine(num +" is even number");
+}
+else
+{
+    Console.WriteLine(num +" is odd number");
 }
