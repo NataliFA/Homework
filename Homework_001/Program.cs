@@ -43,7 +43,7 @@ else
 
 //Задача 3: Напишите программу, которая на вход принимает число и выдаёт, 
 //является ли число чётным (делится ли оно на два без остатка).
-
+/*
 Console.Write("Imput integer number: ");
 int num = Convert.ToInt32(Console.ReadLine());
 
@@ -55,3 +55,17 @@ else
 {
     Console.WriteLine(num +" is odd number");
 }
+*/
+
+//Задача 4: Напишите программу, которая на вход принимает число (N), а на выходе показывает все чётные числа от 1 до N.
+/*
+Console.Write("Imput integer number: ");
+int num = Convert.ToInt32(Console.ReadLine());
+int a = 0;
+
+while (a <= num)
+{
+    Console.Write(a + " "); 
+    a = a + 2;
+}
+*/
