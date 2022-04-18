@@ -1,5 +1,5 @@
 ﻿// Задача 1: Напишите программу, которая на вход принимает два числа и выдаёт, какое число большее, а какое меньшее.
-/* 
+/*
 Console.Write("Imput first integer number: ");
 int num1 = Convert.ToInt32(Console.ReadLine());
 Console.Write("Imput second integer number: ");
@@ -61,7 +61,7 @@ else
 /*
 Console.Write("Imput integer number: ");
 int num = Convert.ToInt32(Console.ReadLine());
-int a = 0;
+int a = 2;
 
 while (a <= num)
 {
