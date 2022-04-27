@@ -19,16 +19,35 @@ SecondDigit();
 
 // Задача 13: Напишите программу, которая выводит третью цифру заданного числа или сообщает, что третьей цифры нет.
 /*
-void ThirdDigitOfNumber()
+void ThirdDigitOfNumber(int num)
 {
-    
-    Console.Write("Enter a number: ");
-    int num = Convert.ToInt32(Console.ReadLine());
- 
-    
-        Console.Write("no third digit");
+    if (num < 100)
+        Console.Write(num + " -> No third digit");
+    if (num > 99 && num < 1000)
+    {
+        int num1 = num % 10;
+        Console.Write(num + " -> " + num1);
+    }
+    if (num > 999)
+    {
+        int count = 0;
+        Console.Write(num);
+        while (num > 999)
+        {
+            num /= 10;
+            if (num < 999)
+            {
+                int num2 = num % 10;
+                Console.Write(" -> " + num2);
+                break;
+            }
+            count++;
+        }
+    }
 }
-ThirdDigitOfNumber();
+Console.Write("Enter a number: ");
+int number = Convert.ToInt32(Console.ReadLine());
+ThirdDigitOfNumber(number);
 */
 
 // Задача 15: Напишите программу, которая принимает на вход цифру, обозначающую день недели, и проверяет, является ли этот день выходным.
