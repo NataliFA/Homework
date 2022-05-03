@@ -31,8 +31,8 @@ AmountOfEvenNumbers(myarray);
 */
 
 // Задача 36: Задайте одномерный массив, заполненный случайными числами. Найдите сумму элементов, стоящих на нечётных позициях.
-
 /*
+
 int[] CreateRandomArray(int size, int min, int max)
 {
     int[] array = new int[size];
@@ -56,12 +56,12 @@ void SumOfOddPosition(int[] array)
     Console.Write(sum);
 }
 
-int[] myarray = CreateRandomArray(7, 0, 5);
+int[] myarray = CreateRandomArray(10, -5, 5);
 SumOfOddPosition(myarray);
 */
 
 // Задача 38: Задайте массив вещественных чисел. Найдите разницу между максимальным и минимальным элементом массива.
-
+/*
 double[] CreateRandomArray(int size, int min, int max)
 {
     double[] array = new double[size];
@@ -101,3 +101,4 @@ void DifferenceMaxMinEl(double[] arr)
 
 double[] myarray = CreateRandomArray(10, -10, 20);
 DifferenceMaxMinEl(myarray);
+*/
