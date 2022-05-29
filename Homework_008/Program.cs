@@ -1,5 +1,5 @@
 ﻿// Задача 54: Задайте двумерный массив. Напишите программу, которая упорядочит по возрастанию элементы каждой строки двумерного массива.
-/* доделать
+/*
 int[,] CreateRandom2DArray(int m, int n)
 {
     int[,] array = new int[m, n];
@@ -8,15 +8,14 @@ int[,] CreateRandom2DArray(int m, int n)
         for (int j = 0; j < n; j++)
         {
             array[i, j] = new Random().Next(0, 10);
-            Console.Write(array[i, j] + " ");
         }
-        Console.WriteLine();
     }
     return array;
 }
 
 void Print2DArray(int[,] newArr)
 {
+    Console.WriteLine();
     for (int i = 0; i < newArr.GetLength(0); i++)
     {
         for (int j = 0; j < newArr.GetLength(1); j++)
@@ -29,25 +28,27 @@ void Print2DArray(int[,] newArr)
 
 int[,] AscendingOrder(int[,] arr)
 {
-    Console.WriteLine();
-
     for (int i = 0; i < arr.GetLength(0); i++)
     {
         int j = 0;
 
-        while (j < arr.GetLength(1))
+        while (j != arr.GetLength(1) - 1)
         {
-            int min = arr[0,0];
+            int min = arr[i, j];
 
-            if (arr[i, j] > min)
+            if (min < arr[i, j + 1])
+            {
+                min = arr[i, j + 1];
+            }
+            else
             {
                 min = arr[i, j];
-                int temp = min;
-                min = arr[i, j];
-                arr[i, j] = temp;
-                j++;
             }
-            else j++;
+
+            int temp = arr[i, arr.GetLength(1) - 1];
+            arr[i, arr.GetLength(1) - 1] = arr[i, j];
+            arr[i, j] = temp;
+            j++;
         }
     }
     return arr;
@@ -60,13 +61,14 @@ Console.Write("Input number of columns: ");
 int cols = Convert.ToInt32(Console.ReadLine());
 
 int[,] myArray = CreateRandom2DArray(rows, cols);
-int[,] newArray = AscendingOrder(myArray);
+Print2DArray(myArray);
 
+int[,] newArray = AscendingOrder(myArray);
 Print2DArray(newArray);
 */
 
 // Задача 56: Задайте прямоугольный двумерный массив. Напишите программу, которая будет находить строку с наименьшей суммой элементов.
-/* проверить, убрать лишнее
+/*
 int[,] CreateRandom2DArray(int m, int n)
 {
     int[,] array = new int[m, n];
@@ -85,38 +87,32 @@ int[,] CreateRandom2DArray(int m, int n)
 int[] SumElOfRows(int[,] arr)
 {
     Console.WriteLine();
-    int[] nas = new int[arr.GetLength(0)];
+    int[] sumArray = new int[arr.GetLength(0)];
 
     for (int i = 0; i < arr.GetLength(0); i++)
     {
-        int j = 0;
         int sum = 0;
-        while (j < arr.GetLength(1))
+        for (int j = 0; j < arr.GetLength(1); j++)
         {
             sum = sum + arr[i, j];
-            j++;
         }
-        nas[i] = sum;
-
+        sumArray[i] = sum;
     }
-    return nas;
+    return sumArray;
 }
 
 void MinSum(int[] ar)
 {
-    int i = 0;
     int minPosition = 0;
     int min = ar[0];
 
-    while (i < ar.Length)
+    for (int i = 0; i < ar.Length; i++)
     {
         if (ar[i] < min)
         {
             min = ar[i];
             minPosition = i;
         }
-        i++;
-
     }
     Console.Write($"Строка с наименьшей суммой элементов - {minPosition + 1}");
 }
@@ -135,14 +131,13 @@ Console.Write("Input number of columns: ");
 int cols = Convert.ToInt32(Console.ReadLine());
 
 int[,] myArray = CreateRandom2DArray(rows, cols);
-int[] newarraysum = SumElOfRows(myArray);
+int[] newArraySum = SumElOfRows(myArray);
 
-ShowArray(newarraysum);
-MinSum(newarraysum);
+ShowArray(newArraySum); // Метод ShowArray для вывода одномерного массива, который представляет из себя сумму каждой строки двумерного массива. Для проверки
+MinSum(newArraySum);
 */
-
 // Задача 62: Заполните спирально массив 4 на 4.
-/*
+
 int[,] CreateRandom2DArray(int m, int n)
 {
     int[,] array = new int[m, n];
@@ -150,26 +145,20 @@ int[,] CreateRandom2DArray(int m, int n)
     {
         for (int j = 0; j < n; j++)
         {
-            array[i, j] = i + j + 1;
+            array[0, j] = i + j + 1;
+
+            for (int k = m - 1; k != 0; k--)
+            {
+                for (int l = n - 2; l != 0; l--)
+                {
+                    array[k, l] = array[i, j] + k - l;
+
+                    array[i, 0] = array[k, l] + 1;
+                }
+            }
         }
     }
     return array;
-}
-
-
-void CreateRandom2DArray2(int m, int n)
-{
-    int[,] array = new int[m, n];
-    for (int i = m - 1; i == 1; i--)
-    {
-        for (int j = n - 2; j == 1; j--)
-        {
-            array[i, j] = i + j + 3;
-            Console.Write(array[i, j] + " ");
-        }
-        Console.WriteLine();
-    }
-
 }
 
 void Print2DArray(int[,] newArr)
@@ -190,7 +179,7 @@ int rows = Convert.ToInt32(Console.ReadLine());
 Console.Write("Input number of columns: ");
 int cols = Convert.ToInt32(Console.ReadLine());
 
-//int[,] myArray = 
-CreateRandom2DArray2(rows, cols);
+int[,] myArray = CreateRandom2DArray(rows, cols);
+Print2DArray(myArray);
 
-//Print2DArray(myArray);
+
