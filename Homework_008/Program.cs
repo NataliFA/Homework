@@ -7,7 +7,7 @@ int[,] CreateRandom2DArray(int m, int n)
     {
         for (int j = 0; j < n; j++)
         {
-            array[i, j] = new Random().Next(0, 10);
+            array[i, j] = new Random().Nert(0, 10);
         }
     }
     return array;
@@ -30,37 +30,29 @@ int[,] AscendingOrder(int[,] arr)
 {
     for (int i = 0; i < arr.GetLength(0); i++)
     {
-        int j = 0;
-
-        while (j != arr.GetLength(1) - 1)
+        for (int j = 0; j < arr.GetLength(1) - 1; j++)
         {
-            int min = arr[i, j];
-
-            if (min < arr[i, j + 1])
+            for (int k = j + 1; k < arr.GetLength(1); k++)
             {
-                min = arr[i, j + 1];
+                if (arr[i, j] > arr[i, k])
+                {
+                    int temp = arr[i, j];
+                    arr[i, j] = arr[i, k];
+                    arr[i, k] = temp;
+                }
             }
-            else
-            {
-                min = arr[i, j];
-            }
-
-            int temp = arr[i, arr.GetLength(1) - 1];
-            arr[i, arr.GetLength(1) - 1] = arr[i, j];
-            arr[i, j] = temp;
-            j++;
         }
     }
     return arr;
 }
 
-Console.Write("Input number of rows: ");
-int rows = Convert.ToInt32(Console.ReadLine());
+Console.Write("Input number of r: ");
+int r = Convert.ToInt32(Console.ReadLine());
 
 Console.Write("Input number of columns: ");
-int cols = Convert.ToInt32(Console.ReadLine());
+int c = Convert.ToInt32(Console.ReadLine());
 
-int[,] myArray = CreateRandom2DArray(rows, cols);
+int[,] myArray = CreateRandom2DArray(r, c);
 Print2DArray(myArray);
 
 int[,] newArray = AscendingOrder(myArray);
@@ -76,7 +68,7 @@ int[,] CreateRandom2DArray(int m, int n)
     {
         for (int j = 0; j < n; j++)
         {
-            array[i, j] = new Random().Next(0, 10);
+            array[i, j] = new Random().Nert(0, 10);
             Console.Write(array[i, j] + " ");
         }
         Console.WriteLine();
@@ -84,7 +76,7 @@ int[,] CreateRandom2DArray(int m, int n)
     return array;
 }
 
-int[] SumElOfRows(int[,] arr)
+int[] SumElOfr(int[,] arr)
 {
     Console.WriteLine();
     int[] sumArray = new int[arr.GetLength(0)];
@@ -124,39 +116,76 @@ void ShowArray(int[] array)
     Console.WriteLine();
 }
 
-Console.Write("Input number of rows: ");
-int rows = Convert.ToInt32(Console.ReadLine());
+Console.Write("Input number of r: ");
+int r = Convert.ToInt32(Console.ReadLine());
 
 Console.Write("Input number of columns: ");
-int cols = Convert.ToInt32(Console.ReadLine());
+int c = Convert.ToInt32(Console.ReadLine());
 
-int[,] myArray = CreateRandom2DArray(rows, cols);
-int[] newArraySum = SumElOfRows(myArray);
+int[,] myArray = CreateRandom2DArray(r, c);
+int[] newArraySum = SumElOfr(myArray);
 
 ShowArray(newArraySum); // Метод ShowArray для вывода одномерного массива, который представляет из себя сумму каждой строки двумерного массива. Для проверки
 MinSum(newArraySum);
 */
-// Задача 62: Заполните спирально массив 4 на 4.
 
+// Задача 62: Заполните спирально массив 4 на 4.
+/*
 int[,] CreateRandom2DArray(int m, int n)
 {
     int[,] array = new int[m, n];
-    for (int i = 0; i < m; i++)
+    int num = 1;
+
+    for (int j = 0; j < n; j++)
     {
-        for (int j = 0; j < n; j++)
+        array[0, j] = num;
+        num++;
+    }
+    for (int i = 1; i < m; i++)
+    {
+        array[i, n - 1] = num;
+        num++;
+    }
+    for (int k = n - 2; k >= 0; k--)
+    {
+        array[m - 1, k] = num;
+        num++;
+    }
+    for (int l = m - 2; l >= 1; l--)
+    {
+        array[l, 0] = num;
+        num++;
+    }
+
+    int r = 1, c = 1;
+
+    while (num < m * n)
+    {
+        while (array[r, c + 1] == 0)
         {
-            array[0, j] = i + j + 1;
-
-            for (int k = m - 1; k != 0; k--)
-            {
-                for (int l = n - 2; l != 0; l--)
-                {
-                    array[k, l] = array[i, j] + k - l;
-
-                    array[i, 0] = array[k, l] + 1;
-                }
-            }
+            array[r, c] = num;
+            num++;
+            c++;
         }
+        while (array[r + 1, c] == 0)
+        {
+            array[r, c] = num;
+            num++;
+            r++;
+        }
+        while (array[r, c - 1] == 0)
+        {
+            array[r, c] = num;
+            num++;
+            c--;
+        }
+        while (array[r - 1, c] == 0)
+        {
+            array[r, c] = num;
+            num++;
+            r--;
+        }
+        if (array[r, c] == 0) array[r, c] = m * n;
     }
     return array;
 }
@@ -167,7 +196,7 @@ void Print2DArray(int[,] newArr)
     {
         for (int j = 0; j < newArr.GetLength(1); j++)
         {
-            Console.Write(newArr[i, j] + " ");
+            Console.Write(newArr[i, j] + "\t");
         }
         Console.WriteLine();
     }
@@ -181,5 +210,5 @@ int cols = Convert.ToInt32(Console.ReadLine());
 
 int[,] myArray = CreateRandom2DArray(rows, cols);
 Print2DArray(myArray);
-
+*/
 
